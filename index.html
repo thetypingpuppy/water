@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<header>
+		<title>WaterSimulation</title>
+		<link rel="stylesheet" href="styles.css"/>
+	</header>
+	<body>
+		<h1>HTML5 Water Simulation</h1>
+		<div id="mainContent">
+			<p>
+				Click it and watch it wobble and stuff.
+			</p>
+			<div id="canvasContainer">
+				<canvas id="canvas" height=270 width=480>HTML5 needed</canvas>
+			</div>
+			<span id="inputs">
+				<label>Decay:</label>
+				<input id="inputD" type="number" value="0.995" min="0" max="1" step="0.01"/>
+				<label>Viscosity:</label>
+				<input id="inputV" type="number" value="0.06" min="0" max="1" step="0.01"/>
+				<button id="buttonReset">Reset</button>
+			</span>
+			<script type="text/javascript" src="water.js"></script>
+		</div>
+	</body>
+</html>
