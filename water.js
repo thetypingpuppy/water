@@ -14,12 +14,29 @@ var SIZE = 50;
 var xarray = new Array();
 var yarray = new Array();
 
+
 var flowArray = new Array();
 
 var volArray = new Array();
 var g = 0.05
 
 var ball = {velocity:[0,0], position:[200,300], radius: 20};
+
+var beach = new Array();
+beach[0] = 240;
+beach[1] = 270;
+beach[2] = 420;
+beach[3] = 140;
+beach[4] = 480;
+beach[5] = 135;
+beach[6] = 480;
+beach[7] = 270;
+
+
+//.moveTo(240,270);
+//ctx.lineTo(420,140);
+//ctx.lineTo(480,135);
+//ctx.lineTo(480,270);
 
 var getFlow = function(i) {
 	switch (i) {
@@ -39,6 +56,15 @@ var getHeight = function(i) {
 		return (volArray[SIZE - 2].vol + (volArray[SIZE - 2].vol - volArray[SIZE - 3].vol));
 	}
 	return ((volArray[i - 1].vol + volArray[i].vol) / 2);
+}
+
+var getBeachHeight = function(i){
+
+	//beach[2]
+	//beach[3]
+	//beach[4]
+	//beach[5]
+
 }
 
 var click = function(e) {
@@ -66,7 +92,7 @@ var update = function() {
 		var vol = volArray[i];
 
 		var change = getFlow(i) - getFlow(i + 1);
-		if (change < -3 && !vol.hasBlob) {
+		if (change < -2.5 && !vol.hasBlob) {
 			vol.heightOfTheBlob = 2
 			vol.speedOfTheBlob = 1;
 			vol.blobElevation = vol.vol;
@@ -133,9 +159,9 @@ var draw = function() {
 	ctx.fillStyle = 'rgba(0,0,0,0.3)';
 	ctx.beginPath();
 	ctx.rect(0, 0, width, height);
-	ctx.closePath(); 
+	ctx.closePath();
 	ctx.fill();
-	
+
 	ctx.fillStyle = '#0020ff';
 	ctx.beginPath();
 	ctx.moveTo(0, height);
@@ -144,10 +170,23 @@ var draw = function() {
 	}
 
 	ctx.lineTo(width, height);
-	ctx.closePath(); 
+	ctx.closePath();
 	ctx.fill();
 
 
+// draw tez beach
+ctx.beginPath();
+ctx.moveTo(beach[0],beach[1]);
+ctx.lineTo(beach[2],beach[3]);
+ctx.lineTo(beach[4],beach[5]);
+ctx.lineTo(beach[6],beach[7]);
+ctx.lineTo(beach[0],beach[1]);
+ctx.lineTo
+ctx.fillStyle = '#ffffff'
+//ctx.stroke();
+ctx.fill();
+
+//
 
 	xarray.forEach(function(x, i) {
 		var vol = volArray[i];
@@ -207,7 +246,7 @@ reset();
 ctx.fillStyle = '#000000';
 ctx.beginPath();
 ctx.rect(0, 0, width, height);
-ctx.closePath(); 
+ctx.closePath();
 ctx.fill();
 
 canvas.onclick = click;
